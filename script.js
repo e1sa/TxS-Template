@@ -68,11 +68,14 @@ mainImage.style.backgroundImage = gifs[Dancible - 1];
 compareButton.hidden = false;
 }
 var songs = [
-  "spotify:track:0KhM1c2bkqEAdxydjmZQPs", //First light hidden orchestra
-  "spotify:track:2vmGgEn95r2rNAzN5v3h4X", // Homebody
-  "spotify:track:0NVNmybggOg7HqjcxCkvpq",
+  "spotify.com:track:4YispFW4Atf5liJToaW01i",//Timing Yk Osiris
+  "spotify.com:track:0KfgfxTnqfX4IfhVDpPYTd", //Not Regular person
+  "spotify.com:track:0ZNrc4kNeQYD9koZ3KvCsy", // big bank
+  "spotify.com:track:2wtGd1BVTNPIbmrtZew4XW", // aje
+  "spotify.com:track:4jK1VQQGDnNOLfyVXCxGsR", // My Pyt
 ]
-function getSpotifySrc(song) {
+
+function getSpotifySrc(songs) {
   const songCode = song.split(':')[2];
   return `https://open.spotify.com/embed/track/${songCode}`;
 }
@@ -89,9 +92,64 @@ async function getAlbumCover(song) {
     .then(r => r.json());
   return data.thumbnail_url;
 }
+var songsData = [
+  {
+    songtitle:'Timing',
+    songURI: 'spotify.com:track:4YispFW4Atf5liJToaW01i',
+    songscore:'..',
+    artistname:'Yk Osiris',
+    userrating:'..',
+
+  }
+,
+  {
+    songtitle:'Not a Regular person',
+    songURI: 'spotify.com:track:0KfgfxTnqfX4IfhVDpPYTd',
+    songscore:'..',
+    artistname:'A boogie with a Hoodie ',
+    userrating:'..',
+
+  }
+,
+  {
+    songtitle:'Big Bank ',
+    songURI: 'spotify.com:track:0ZNrc4kNeQYD9koZ3KvCsy',
+    songscore:'..',
+    artistname:'YG',
+    userrating:'..',
+
+  }
+  ,
+  {
+    songtitle:'Aje',
+    songURI: 'spotify.com:track:2wtGd1BVTNPIbmrtZew4XW',
+    songscore:'..',
+    artistname:'Davido',
+    userrating:'..',
+
+  }
+  ,
+  {
+    songtitle:'My PYT',
+    songURI: 'spotify.com:track:4jK1VQQGDnNOLfyVXCxGsR',
+    songscore:'..',
+    artistname:'Wale',
+    userrating:'..',
+
+  }
+]
+songsData[0].songURI
+songsData[0].songTitle
+songsData[0].songArtist
+
+songsData[1].songURI
 
 
-//
+//var songTitle = document.getElementById('song-title')
+//var songArtist = document.getElementById('song-artist')
+
+//songTitle.innerHTML = songdata[INDEX].songTitle
+//songArtist.innerHTML = songdata[INDEX].songTitle
 // function test1(){
 //   Dancible = 1
 //
