@@ -29,9 +29,9 @@ var yrScore = document.getElementById('yr-score')
 var iframeElement = document.querySelector("#song-iframe"); //select Iframe
 var nextSong = document.getElementById('newSong')
 var compareButton = document.getElementById('result-button')
-
+var resultpage = document.getElementById('totalScore')
 // this is how you replace the image from the background
-mainImage.style.backgroundImage = "url(https://i.giphy.com/media/1d5KHhOA1oTpX7ROOi/giphy.gif)"
+// mainImage.style.backgroundImage = "url(https://i.giphy.com/media/1d5KHhOA1oTpX7ROOi/giphy.gif)"
 
 // this is how we hide the resultBox element
 resultBox.hidden = true;
@@ -39,9 +39,9 @@ compareButton.hidden = true;
 
 // this is how you create a function
 //function testClickFunction(){
-  //alert('clickedddd')
+//alert('clickedddd')
 //}
-const gifs=[
+const gifs = [
   'url(https://i.giphy.com/media/BCXMSiVZeo8xy/giphy.gif)',
   'url(https://i.giphy.com/media/1d5KHhOA1oTpX7ROOi/giphy.gif)',
   'url(https://i.giphy.com/media/3o6Zt5nSYQa0czSmnm/giphy.gif)',
@@ -55,32 +55,33 @@ const gifs=[
 
 ]
 var Dancible = ''
+var currentSong = 0
 function ratingButton(rating) {
-   Dancible = rating
-  mainImage.style.backgroundImage = gifs[rating  - 1];
+  Dancible = rating
+  mainImage.style.backgroundImage = gifs[rating - 1];
 
 }
 var slider = document.getElementById('range')
 
-function rates(){
+function rates() {
   Dancible = slider.value
-mainImage.style.backgroundImage = gifs[Dancible - 1];
-compareButton.hidden = false;
+  mainImage.style.backgroundImage = gifs[Dancible - 1];
+  compareButton.hidden = false;
 }
 var songs = [
-  "spotify.com:track:4YispFW4Atf5liJToaW01i",//Timing Yk Osiris
+  "spotify.com:track:4YispFW4Atf5liJToaW01i", //Timing Yk Osiris
   "spotify.com:track:0KfgfxTnqfX4IfhVDpPYTd", //Not Regular person
   "spotify.com:track:0ZNrc4kNeQYD9koZ3KvCsy", // big bank
   "spotify.com:track:2wtGd1BVTNPIbmrtZew4XW", // aje
   "spotify.com:track:4jK1VQQGDnNOLfyVXCxGsR", // My Pyt
 ]
 
-function getSpotifySrc(songs) {
+function getSpotifySrc(song) {
   const songCode = song.split(':')[2];
   return `https://open.spotify.com/embed/track/${songCode}`;
 }
 
-async function setAlbumCover(song, element){
+async function setAlbumCover(song, element) {
   var aa = await getAlbumCover(song);
   element.style.backgroundImage = `url(${aa})`;
 }
@@ -92,49 +93,44 @@ async function getAlbumCover(song) {
     .then(r => r.json());
   return data.thumbnail_url;
 }
-var songsData = [
-  {
-    songtitle:'Timing',
+var songsData = [{
+    songtitle: 'Timing',
     songURI: 'spotify.com:track:4YispFW4Atf5liJToaW01i',
-    songscore:'..',
-    artistname:'Yk Osiris',
-    userrating:'..',
+    songscore: '..',
+    artistname: 'Yk Osiris',
+    userrating: '..',
 
-  }
-,
+  },
   {
-    songtitle:'Not a Regular person',
+    songtitle: 'Not a Regular person',
     songURI: 'spotify.com:track:0KfgfxTnqfX4IfhVDpPYTd',
-    songscore:'..',
-    artistname:'A boogie with a Hoodie ',
-    userrating:'..',
+    songscore: '..',
+    artistname: 'A boogie with a Hoodie ',
+    userrating: '..',
 
-  }
-,
+  },
   {
-    songtitle:'Big Bank ',
+    songtitle: 'Big Bank ',
     songURI: 'spotify.com:track:0ZNrc4kNeQYD9koZ3KvCsy',
-    songscore:'..',
-    artistname:'YG',
-    userrating:'..',
+    songscore: '..',
+    artistname: 'YG',
+    userrating: '..',
 
-  }
-  ,
+  },
   {
-    songtitle:'Aje',
+    songtitle: 'Aje',
     songURI: 'spotify.com:track:2wtGd1BVTNPIbmrtZew4XW',
-    songscore:'..',
-    artistname:'Davido',
-    userrating:'..',
+    songscore: '..',
+    artistname: 'Davido',
+    userrating: '..',
 
-  }
-  ,
+  },
   {
-    songtitle:'My PYT',
+    songtitle: 'My PYT',
     songURI: 'spotify.com:track:4jK1VQQGDnNOLfyVXCxGsR',
-    songscore:'..',
-    artistname:'Wale',
-    userrating:'..',
+    songscore: '..',
+    artistname: 'Wale',
+    userrating: '..',
 
   }
 ]
@@ -199,21 +195,50 @@ songsData[1].songURI
 //   Dancible = 10
 //   mainImage.style.backgroundImage= "url('https://i.giphy.com/media/xe9csf50g4SqY/giphy.gif')"
 // }
-function Compare(){
+iframeElement.src = getSpotifySrc(songsData[currentSong].songURI)
+setAlbumCover(songsData[currentSong].songURI , mainImage)
+function Compare() {
   resultBox.hidden = false;
   voteBox.hidden = true;
   youScore.innerHTML = Dancible;
   youImage.style.backgroundImage = gifs[Dancible - 1];
 
 }
+var = result
 function Next(){
+  currentSong = currentSong + 1;
+  if (currentSong >= songsData.length){
+    results = totalScore.innerHTML
+  } else {
+    results =  currentSong + 1;
+
   resultBox.hidden = true;
   voteBox.hidden = false;
   youImage.style.backgroundImage = gifs[Dancible - 1];
-
+  iframeElement.src = getSpotifySrc(songsData[currentSong].songURI)
+  setAlbumCover(songsData[currentSong].songURI , mainImage)
+  Dancible = totalScore.innerHTML
 }
 
+/*
+Check if counter currentSong is greater than songsData.length
+if(currentSong >= songsData.length){
+ //do something
+}else{
+//go to next song
+}
+if true , run function to showResult
+write function to showResult
 
+next, create a new row on HTML
+id as totalScore
+
+create a var and select the elemente
+var totalScoreEle = document.getElementById('totalScore')
+
+on Result show something on totalScore
+totalScoreEle.innerHTML = something
+*/
 
 // Activity today will be
 
