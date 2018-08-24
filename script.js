@@ -96,7 +96,7 @@ async function getAlbumCover(song) {
 var songsData = [{
     songtitle: 'Timing',
     songURI: 'spotify.com:track:4YispFW4Atf5liJToaW01i',
-    songscore: '..',
+    songscore: '7.1',
     artistname: 'Yk Osiris',
     userrating: '..',
 
@@ -104,7 +104,7 @@ var songsData = [{
   {
     songtitle: 'Not a Regular person',
     songURI: 'spotify.com:track:0KfgfxTnqfX4IfhVDpPYTd',
-    songscore: '..',
+    songscore: '8.7',
     artistname: 'A boogie with a Hoodie ',
     userrating: '..',
 
@@ -112,7 +112,7 @@ var songsData = [{
   {
     songtitle: 'Big Bank ',
     songURI: 'spotify.com:track:0ZNrc4kNeQYD9koZ3KvCsy',
-    songscore: '..',
+    songscore: '7.4',
     artistname: 'YG',
     userrating: '..',
 
@@ -120,7 +120,7 @@ var songsData = [{
   {
     songtitle: 'Aje',
     songURI: 'spotify.com:track:2wtGd1BVTNPIbmrtZew4XW',
-    songscore: '..',
+    songscore: '7.7',
     artistname: 'Davido',
     userrating: '..',
 
@@ -128,17 +128,17 @@ var songsData = [{
   {
     songtitle: 'My PYT',
     songURI: 'spotify.com:track:4jK1VQQGDnNOLfyVXCxGsR',
-    songscore: '..',
+    songscore: '5.6',
     artistname: 'Wale',
     userrating: '..',
 
   }
 ]
-songsData[0].songURI
-songsData[0].songTitle
-songsData[0].songArtist
+//songsData[0].songURI
+//songsData[0].songTitle
+//songsData[0].songArtist
 
-songsData[1].songURI
+//songsData[1].songURI
 
 
 //var songTitle = document.getElementById('song-title')
@@ -202,22 +202,23 @@ function Compare() {
   voteBox.hidden = true;
   youScore.innerHTML = Dancible;
   youImage.style.backgroundImage = gifs[Dancible - 1];
-
+  spotifyScore.innerHTML= songscore[currentSong]
 }
-var = result
+
 function Next(){
   currentSong = currentSong + 1;
   if (currentSong >= songsData.length){
-    results = totalScore.innerHTML
+    resultpage.innerHTML = "FINISHED"
+    resultBox.hidden = true;
   } else {
-    results =  currentSong + 1;
+    resultBox.hidden = true;
+    voteBox.hidden = false;
+    youImage.style.backgroundImage = gifs[Dancible - 1];
+    iframeElement.src = getSpotifySrc(songsData[currentSong].songURI)
+    setAlbumCover(songsData[currentSong].songURI , mainImage)
 
-  resultBox.hidden = true;
-  voteBox.hidden = false;
-  youImage.style.backgroundImage = gifs[Dancible - 1];
-  iframeElement.src = getSpotifySrc(songsData[currentSong].songURI)
-  setAlbumCover(songsData[currentSong].songURI , mainImage)
-  Dancible = totalScore.innerHTML
+
+  }
 }
 
 /*
